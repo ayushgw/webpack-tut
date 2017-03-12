@@ -1,5 +1,7 @@
 var style = require('./style/globalStyle.css');
 
+import $ from 'jquery';
+
 var app = document.getElementById('app');
 app.innerHTML = `
   <div id="menu">
@@ -21,6 +23,8 @@ document.getElementById('loadpage2').addEventListener('click', () => {
     document.getElementById('content').innerHTML = pageModule.default;
   })
 });
+
+$('#app').css('background-color', 'white');
 
 // Used in HMR
 if(module.hot) {

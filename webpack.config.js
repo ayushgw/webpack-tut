@@ -52,6 +52,12 @@ const cssLoader = PRODUCTION
 
 //MAIN CONFIGURATION CODE
 const config = {
+  externals: {
+    'jquery': 'jQuery'
+    // jquery is available at the global variable jQuery
+    // it will not included in the final prod build - reduce size
+    // used as a CDN, so remove npm installs
+  },
   devtool: 'source-map',
   plugins: plugins,
   entry: entry,
