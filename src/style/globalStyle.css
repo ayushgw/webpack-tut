@@ -1,0 +1,11 @@
+body {
+  background-color: lightblue;
+  font-size: 3em;
+}
+
+:local(.box) {
+  background-color: white;
+  width: 40%;
+  padding: 1em;
+  border: 2px solid seagreen;
+}
