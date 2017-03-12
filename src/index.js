@@ -1,24 +1,26 @@
 var style = require('./style/globalStyle.css');
 
-var messages = require('./messages');
-
-//ES6 Code
-// import Button from './button';
-// import i from './image';
-
-// var newMsg = () => (`<p>${messages.greet} ${messages.event} ${i}</p>`);
-
-import { mul } from './mathStuff';
-const newMsg = () => (
-  `<div class="${style.box}">
-    DEV: ${DEVELOPMENT.toString()}<br>
-    PROD: ${PRODUCTION.toString()}<br>
-  </div>`
-);
-
 var app = document.getElementById('app');
-app.innerHTML = newMsg();
+app.innerHTML = `
+  <div id="menu">
+    <button id="loadpage1">Load Page 1</button>
+    <button id="loadpage2">Load Page 2</button>
+  </div>
+  <div id="content">
+    <h1>Home</h1>
+  </div>
+`;
 
+document.getElementById('loadpage1').addEventListener('click', () => {
+  System.import('./page1').then(pageModule => { //lazyloading Module on click using System.import() - alt for import/require
+    document.getElementById('content').innerHTML = pageModule.default;
+  })
+});
+document.getElementById('loadpage2').addEventListener('click', () => {
+  System.import('./page2').then(pageModule => { //lazyloading Module on click using System.import() - alt for import/require
+    document.getElementById('content').innerHTML = pageModule.default;
+  })
+});
 
 // Used in HMR
 if(module.hot) {
